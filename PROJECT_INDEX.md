@@ -6,7 +6,8 @@
 
 | 项目 | 类型 | 状态 | 位置 |
 |---|---|---|---|
-| VF520 | 完整商品项目（资料整理 + 生图 + 商品页 + 营销素材） | 进行中 | `PROJECTS/VF520/` |
+| VF520 | 完整商品项目（资料整理 + 生图 + 商品页 + 营销素材） | 暂停 | `PROJECTS/VF520/` |
+| 2026-09 月度运营规划 | 月度运营 + 测品作图 + 采购节点 + 自动化协调 | 进行中 | `PROJECTS/2026-09_MONTHLY_OPERATIONS/` |
 
 ## 项目目录规则
 
@@ -18,6 +19,12 @@ CURRENT_STATE.md
 DECISION_LOG.md
 PITFALLS.md
 ASSET_INDEX.md
+```
+
+复杂执行项目可增加：
+
+```
+TASK_QUEUE.md
 ```
 
 ## 项目资料规则
