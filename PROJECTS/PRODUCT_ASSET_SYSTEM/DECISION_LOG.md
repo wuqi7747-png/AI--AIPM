@@ -21,29 +21,29 @@
 
 目标：新窗口能找到正确项目，同时不为“流程完整”浪费上下文。
 
-## A3｜产品资产 V2：产品分区单一 owner
+## A3｜产品资产 V2：分层唯一 owner + 按需产品 owner
 状态：ACTIVE
 日期：2026-09-11
 
-执行仓库 V2 采用：
-- `products/PRODUCTS.json`：低频产品注册表；
-- 产品 `PRODUCT.md`：稳定事实/真实性边界；
-- 产品 `ASSETS.json`：Drive 位置 + 长期资产语义；
-- 产品 `STATE.json`：当前 checkpoint；
-- 产品 `CONTENT.md`：最终内容策略/覆盖/输出方向。
+执行仓库采用明确所有权：
+- `GOOGLE_DRIVE_ASSET_MAP.md`：系统根/一级 Drive 入口唯一 owner；
+- `products/PRODUCTS.json`：产品身份、SKU、产品根 Folder ID、本地目录唯一 owner；
+- `PRODUCT.md`：稳定事实/真实性边界；
+- `STATE.json`：当前 checkpoint；
+- `ASSETS.json`：仅产品根内部关键资产语义，按需存在；
+- `CONTENT.md`：最终内容策略/覆盖，按需存在。
 
-普通产品资产变化不再同步多个平行索引，也不再写全局人工 Manifest。
+不要求每个已注册产品预建四个空文件；没有长期内部语义时，只保留产品注册即可。这样保留跨窗口续接能力，同时降低空文件和同步负担。
 
-`manifests/ASSET_MANIFEST.json` 降级为 `LEGACY_READONLY`，仅给未迁移旧产品兜底；所有产品完成迁移后删除。
+旧全局人工 `manifests/ASSET_MANIFEST.json` 已从 `main` 删除。`manifests/` 现在只负责增量变化发现/待处理队列，不再作为语义事实数据库。
 
-该决策 supersedes 旧的“每次 Drive 变化同步 Drive Map + 产品多索引 + 全局 Manifest”的实现方式，但**不取消变化可传播、语义索引和跨窗口续接能力**。
+该决策 supersedes 旧的“Drive Map + 产品多索引 + 全局 Manifest 多处同步”实现，但不取消变化可传播、语义索引和跨窗口续接能力。
 
 ## A4｜复杂持久化操作使用可恢复 operation ledger
 状态：ACTIVE
 日期：2026-09-11
 
 跨 Drive + GitHub、多文件批量移动/替换、或中断可能造成状态不一致时，建立独立 operation：
-
 `PLANNED -> DRIVE_DONE -> METADATA_DONE -> COMMITTED`
 
 普通单文件变化不创建 ledger，避免治理本身变成负担。
@@ -56,8 +56,8 @@
 - 写前刷新；
 - 写后确认；
 - 冲突不覆盖；
-- 尽量按产品/文件分区写；
-- 禁止把每个产品的高频变化集中进一个共享热点文件。
+- 尽量按产品/owner 分区写；
+- 禁止把高频产品变化集中进共享热点文件。
 
 ## A6｜架构验收标准
 状态：ACTIVE
