@@ -74,3 +74,16 @@
 - 真正一次性的失败稿/临时过程文件可不进入长期索引。
 
 完成标准改为：**Drive 修改完成 + 语义回写完成，任务才算真正完成。**
+
+### D14｜AIPM 改为 Control Plane，ozon-WB 为 Execution Plane
+决定：AIPM 不再复制商品图系统内部详细结构和状态，而只负责项目级路由、状态、边界、跨项目依赖与重大决策。
+
+- AIPM = Control Plane：判断“这是哪个项目、入口在哪里、项目是否进行中”。
+- `ozon-WB` = Execution Plane：维护商品图 ACTIVE 规则、产品状态、Manifest、Drive 映射和执行逻辑。
+- Google Drive / API = Data Plane：保存实际资产和数据。
+
+启动采用双路径：
+- **Fast Path**：用户已明确产品/项目时，直接进入执行仓库 `AGENTS.md`，不强制绕 AIPM。
+- **Discovery Path**：任务模糊、跨项目或入口未知时，先由 AIPM `PROJECT_INDEX.md` 路由。
+
+该决策的目的：减少重复上下文、双重记账和跨仓库状态漂移，同时保留新窗口自动找到正确项目的能力。
