@@ -6,12 +6,14 @@
 - 名称：`VF520_生图续接集合包`
 - Folder ID：`1OMKk8g2OY5JDUt9q0r7jWNOoWr37GkWH`
 - URL：`https://drive.google.com/drive/folders/1OMKk8g2OY5JDUt9q0r7jWNOoWr37GkWH`
-- 状态：**当前唯一有效主资料包**
+- 状态：**当前唯一确认可用于 VF520 的主资料包，后续应直接使用这个链接，不要通过其他外层目录推断。**
 
-### 旧空目录
+### 不可靠/不要作为 VF520 入口的链接
 - Folder ID：`1EL9ODVCuDbstPKTyrYP2d_DO2_ms63R3`
 - URL：`https://drive.google.com/drive/folders/1EL9ODVCuDbstPKTyrYP2d_DO2_ms63R3`
-- 状态：旧/空重复目录，不作为当前资料源。
+- 用户现场确认：**这个文件夹里没有放投影仪内容。**
+- 连接器元数据曾返回 `1OMK...` 的 parent 为 `1EL9...`，但这与用户在 Google Drive 实际界面看到的内容冲突，因此该父子关系不作为项目事实。
+- 规则：新窗口不得把 `1EL9...` 当作 VF520 项目入口；必须直接访问 `1OMK...`。
 
 ---
 
