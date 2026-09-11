@@ -55,3 +55,22 @@
 - 认证材料只留用户本地，绝不提交 GitHub。
 
 详细执行规则见 `ozon-WB/.agents/skills/ecommerce-image-core/references/LOCAL_DRIVE_AUTOMATION.md`。
+
+### D13｜任何长期 Drive 变更必须留下语义回写
+决定：只要对 Drive 做了会长期保留的新增、修改、替换、移动、重命名或删除，同一任务必须在 GitHub 或 Drive 的合适索引/状态文件中留下语义记录；禁止“只改 Drive，不留记录”。
+
+这条规则的目的不是复制资产本体，而是让新窗口无需重新逐个打开/扫描文件，就能知道：
+- 变更了什么；
+- 资产在哪里；
+- 图片/视频/文件主要讲什么或证明什么；
+- 用途和当前状态；
+- 必要时的替代关系。
+
+记录位置按类型选择：
+- 路径/结构变化 → `GOOGLE_DRIVE_ASSET_MAP.md` + 对应产品 `ASSET_INDEX.md`；
+- 正式图片/视频/富内容 → `ASSET_INDEX.md` 或 `OUTPUT_INDEX.md`；
+- 锚点/源资料/证据 → `EVIDENCE_INDEX.md` 或 `ASSET_INDEX.md`；
+- 关键词/Listing/卖点 → Drive 保留完整内容，同时在 `COPY_ALIGNMENT / CURRENT_STATUS / ASSET_INDEX` 或等价索引中保存轻量摘要与覆盖状态；
+- 真正一次性的失败稿/临时过程文件可不进入长期索引。
+
+完成标准改为：**Drive 修改完成 + 语义回写完成，任务才算真正完成。**
