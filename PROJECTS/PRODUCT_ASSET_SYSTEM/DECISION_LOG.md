@@ -74,3 +74,27 @@
 - 普通变化维护成本足够低。
 
 如果新增结构不能明显改善这些指标，默认不新增。
+
+## A7｜V2.1 Evidence Layer：动态数据读最新，稳定视觉证据增量审阅
+状态：ACTIVE
+日期：2026-09-12
+
+V2 暴露出一个关键缺口：`ASSETS.json` 能回答“重要资产在哪里”，但不能可靠回答“哪些稳定视觉资料已经审过、审的是哪个版本、哪些能作为真实性锚点、哪些仍未审或已失效”。这会导致新窗口重复全量审图，或者在没有可审计依据时误以为资料已看完。
+
+因此执行仓库新增按需存在的 `EVIDENCE.json` owner，职责仅限稳定/慢变化证据生命周期：
+- 审阅 scope；
+- Drive File ID；
+- revision/version/hash，或退化为 `modifiedTime + size` 的版本指纹；
+- REVIEWED / STALE / 未审等状态；
+- Evidence grade、anchor role、能证明/不能证明什么、冲突关系。
+
+边界必须保持：
+- 关键词、广告、Listing、销量漏斗、竞品数据等动态分析数据仍按任务读取当前最新结构/内容，不建立长期“读过哪些 Sheet”历史；
+- 真实实拍、厂家原图、包装、说明书、参数图、产品视频、APP 截图等稳定证据首次审阅后持久化 File ID 级状态，后续只增量补审新增/变化/冲突项；
+- `EVIDENCE.json` 不能替代正式生图时实际打开真实锚点原图，只负责把全量资料筛成当前任务需要的少量有效锚点；
+- ACTIVE Evidence / Anchor 必须有稳定 File ID，`file_id:null` 不能算稳定证据；
+- 不批量给所有产品制造空 Evidence owner，先按实际需要迁移。
+
+首个试点为 `MINI_RC_FORKLIFT_YELLOW`。验收标准：新窗口能知道审阅覆盖、避免无意义重看、识别 STALE、精确定位底部/遥控器/APP/配件等锚点，并在具体生成任务中重新打开所需原图。
+
+该决策是 V2 的增量升级，不推翻 PRODUCT / ASSETS / STATE / CONTENT 的既有职责。
