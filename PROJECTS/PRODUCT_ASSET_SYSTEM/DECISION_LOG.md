@@ -98,3 +98,18 @@ V2 暴露出一个关键缺口：`ASSETS.json` 能回答“重要资产在哪里
 首个试点为 `MINI_RC_FORKLIFT_YELLOW`。验收标准：新窗口能知道审阅覆盖、避免无意义重看、识别 STALE、精确定位底部/遥控器/APP/配件等锚点，并在具体生成任务中重新打开所需原图。
 
 该决策是 V2 的增量升级，不推翻 PRODUCT / ASSETS / STATE / CONTENT 的既有职责。
+
+
+## A8｜Research / Listing / Creative / Generation 分层
+状态：ACTIVE
+日期：2026-09-30
+
+执行仓库将内容链路明确拆成四类职责：
+- Market Research：搜索需求、强竞品、Amazon/淘宝等成熟市场卖法、评论/Q&A、购买理由与顾虑；
+- Listing：标题、描述、标签与关键词覆盖；
+- Creative / Image Planning：把已采用卖点、顾虑和创意信号转换成视觉方案；
+- Generation：只消费当前图的已确认执行契约和真实 references。
+
+产品事实仍独立由 PRODUCT/Evidence 决定；原始动态市场数据仍留在 Drive；最终采用策略仍只写产品 CONTENT，不新增产品级 Research/Keyword/Image Plan 平行 owner。
+
+该分层的目标是减少重复研究、减少生图上下文污染，并允许同一套研究结论被 Listing、图片、富内容和视频复用。
