@@ -1,7 +1,7 @@
 # 商品图与产品资产系统｜CURRENT_STATE
 
 状态：进行中
-最后核对：2026-09-12
+最后核对：2026-09-30
 
 ## 项目级摘要
 
@@ -10,7 +10,9 @@
 ### 执行面
 - 仓库：`wuqi7747-png/ozon-WB`
 - 硬入口：`AGENTS.md`
-- 通用核心：`.agents/skills/ecommerce-image-core/`
+- 市场研究：`.agents/skills/ecommerce-market-research/`
+- Listing：`.agents/skills/ecommerce-listing/`
+- 图像核心：`.agents/skills/ecommerce-image-core/`
 - 玩具插件：`.agents/skills/ozon-wb-toy-image-sop/`
 
 ### 数据/资产面
@@ -41,6 +43,28 @@
 > **动态数据重新读取；稳定证据增量审阅。**
 
 `EVIDENCE.json` 不替代真实原图。正式生图遇到高风险结构时，仍必须打开当前图所需真实锚点。
+
+## 2026-09-30 内容链路分层
+
+执行仓库已把原本混在 image-core 的研究/Listing/视觉职责拆开：
+
+```text
+PRODUCT truth
+→ Market Research
+→ CONTENT.md
+→ Listing / Image Planning / Rich Content / Video
+→ Generation
+```
+
+项目级效果：
+- 关键词与竞品搜索表现由 Market Research 统一判断；
+- Amazon/淘宝/俄区卖点与购买理由研究归 Research，不再由作图技能重复执行；
+- Listing 独立负责标题/描述/标签与关键词覆盖；
+- Image Planning 只消费已筛好的卖点/顾虑/创意信号；
+- 真实 Generation 不再读取原始关键词、竞品长文或站外研究全文；
+- 产品级 owner 数量不增加，最终采用结论仍由 `CONTENT.md` 承接。
+
+详细规则以 `ozon-WB/AGENTS.md` 和对应 ACTIVE skill 为准。
 
 ## 当前迁移/试点状态
 
